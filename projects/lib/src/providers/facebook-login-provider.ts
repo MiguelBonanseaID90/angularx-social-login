@@ -23,27 +23,7 @@ export class FacebookLoginProvider extends BaseLoginProvider {
   }
 
   initialize(): Promise<void> {
-    return new Promise((resolve, reject) => {
-      try {
-        this.loadScript(
-          FacebookLoginProvider.PROVIDER_ID,
-          `//connect.facebook.net/${this.requestOptions.locale}/sdk.js`,
-          () => {
-            FB.init({
-              appId: this.clientId,
-              autoLogAppEvents: true,
-              cookie: true,
-              xfbml: true,
-              version: this.requestOptions.version,
-            });
-
-            resolve();
-          }
-        );
-      } catch (err) {
-        reject(err);
-      }
-    });
+    return Promise.resolve();
   }
 
   getLoginStatus(): Promise<SocialUser> {
